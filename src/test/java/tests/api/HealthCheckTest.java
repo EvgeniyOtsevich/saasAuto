@@ -1,10 +1,13 @@
 package tests.api;
 
 import commonLibs.api.HealthCheckAPI;
+import commonLibs.utils.Logger.LogListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 
+@Listeners(LogListener.class)
 public class HealthCheckTest extends BaseTest{
 
     public HealthCheckTest(){
