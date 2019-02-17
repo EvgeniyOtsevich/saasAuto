@@ -8,7 +8,16 @@
 ```
   > git clone https://github.com/EvgeniyOtsevich/saasAuto.git
 ```
-
+By default properties are got from `src/config/` folder with next structure:
+##### QA_env.properties/Dev_env.properties
+```
+BaseUrl=...
+BasePort=...
+```
+##### Common.properties/
+```
+endPointPath=...
+```
 ### Execute
 For executing tests run
 ```
