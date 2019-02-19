@@ -2,6 +2,9 @@
 
 ## The repository contains automation framework for GL QA Automation ProCamp.
 
+TODO
+- Implemet Service based tests
+
 ### Setup 
 1. Install Saas-template application
 2. Clone projects 
@@ -11,12 +14,12 @@
 By default properties are got from `src/config/` folder with next structure:
 ##### QA_env.properties/Dev_env.properties
 ```
-BaseUrl=...
-BasePort=...
+BaseUrl=..(0.0.0.0)
+BasePort=...(8888)
 ```
 ##### Common.properties/
 ```
-endPointPath=...
+endPointName=...(/endPointPath)
 ```
 ### Execute
 For executing tests run
