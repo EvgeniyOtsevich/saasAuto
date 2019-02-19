@@ -1,4 +1,4 @@
-package tests.api;
+package tests.api.healthCheck;
 
 import commonLibs.api.HealthCheckAPI;
 import commonLibs.utils.Logger.LogListener;
@@ -7,23 +7,22 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-@Listeners(LogListener.class)
-public class HealthCheckTest extends BaseTest{
+import static org.assertj.core.api.Assertions.assertThat;
 
-    public HealthCheckTest(){
-    }
+@Listeners(LogListener.class)
+public class HealthCheckTest {
 
     @Test(description = "Test GET healthCheck endpoint.")
     public void getHealthCheckTest() throws IOException {
         HealthCheckAPI healthCheckAPI = new HealthCheckAPI();
         String healthCheckResponse = healthCheckAPI.getHealthCheck();
-        assert healthCheckResponse.equalsIgnoreCase("live");
+        assertThat(healthCheckResponse).isEqualToIgnoringCase("live");
     }
 
     @Test(description = "Test not allowed POST healthCheck endpoint.")
     public void postTestHealthCheckTest() throws IOException {
         HealthCheckAPI healthCheckAPI = new HealthCheckAPI();
         String healthCheckResponse = healthCheckAPI.postHealthCheck();
-        assert healthCheckResponse.isEmpty();
+        assertThat(healthCheckResponse).isEmpty();
     }
 }

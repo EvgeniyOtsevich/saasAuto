@@ -11,4 +11,8 @@ public class CommonConfigReader extends ConfigReader{
     public String getHealthCarePath() {
         return getProperties("healthCarePath");
     }
+
+    public String getContactsPath() {
+        return getProperties("contacts");
+    }
 }
