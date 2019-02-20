@@ -2,9 +2,6 @@
 
 ## The repository contains automation framework for GL QA Automation ProCamp.
 
-TODO
-- Implemet Service based tests
-
 ### Setup 
 1. Install Saas-template application
 2. Clone projects 
