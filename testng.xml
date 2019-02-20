@@ -2,14 +2,15 @@
 
 <!-- TestNG Documentation: http://testng.org/doc/documentation-main.html -->
 <!-- Change "false" to "tests", "methods", "classes" or "instances" for running in parallel. See more details in the TestNG documentation. -->
-<suite name="SaasSuite" parallel="methods" thread-count="2">
-    <test name="SaasTest">
+<suite name="Saas Template Suite" parallel="methods" thread-count="2">
+    <test name="API Tests">
         <classes>
             <class name="tests.api.healthCheck.HealthCheckTest" />
             <class name="tests.api.contacts.CreateContactsTest" />
             <class name="tests.api.contacts.DeleteContactsTest" />
             <class name="tests.api.contacts.GetContactsTest" />
             <class name="tests.api.contacts.UpdateContactsTests" />
+            <class name="tests.api.contacts.ServiceBaseTests" />
         </classes>
     </test>
 </suite>

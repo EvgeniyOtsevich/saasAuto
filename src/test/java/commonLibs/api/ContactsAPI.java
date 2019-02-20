@@ -6,6 +6,7 @@ import io.qameta.allure.Step;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
+import io.restassured.response.ResponseBody;
 import io.restassured.specification.RequestSpecification;
 import org.apache.http.HttpStatus;
 
@@ -45,6 +46,15 @@ public class ContactsAPI extends BaseApi {
                 .as(ContactResponse.class);
     }
 
+    @Step("Get nonexistent Contact with ID = {0}")
+    public ResponseBody getNonexistentContactsById(long contactId) {
+        return given().spec(requestSpec)
+                .when().get(commonConfig.getContactsPath()+"/"+contactId)
+                .then()
+                .statusCode(HttpStatus.SC_NOT_FOUND)
+                .extract().response().getBody();
+    }
+
     @Step("Get Contact with First name - {1} and email: {0}")
     public ContactResponse getContactsByEmailAndFirstName(String email, String firstName) {
         return given().spec(requestSpec)
@@ -57,23 +67,11 @@ public class ContactsAPI extends BaseApi {
                 .as(ContactResponse.class);
     }
 
-    @Step("Create contact with email: {0}")
+    @Step("Create contact")
     public ContactResponse createContact(ContactBody contactBody) {
         return given().spec(requestSpec)
                 .contentType(ContentType.JSON)
                 .body(contactBody)
-                .when().post(commonConfig.getContactsPath())
-                .then()
-                .statusCode(HttpStatus.SC_CREATED)
-                .extract().response()
-                .as(ContactResponse.class);
-    }
-
-    @Step("Create contact with email: {0}")
-    public ContactResponse createContact(String email, String f, String l) {
-        return given().spec(requestSpec)
-                .contentType(ContentType.JSON)
-                .body(new ContactBody(email,f,l))
                 .when().post(commonConfig.getContactsPath())
                 .then()
                 .statusCode(HttpStatus.SC_CREATED)
